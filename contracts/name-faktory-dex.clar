@@ -53,13 +53,13 @@
       (try! (as-contract (contract-call? ft transfer tokens-out tx-sender ft-receiver none)))
       (if (>= new-stx TARGET_STX)
         (begin
-          (let ((grad-amount (/ (* new-ft (var-get burn-rate)) u100))
-                (dev-amount (/ (* grad-amount (var-get dev-premium)) u100))
-                (burn-amount (- grad-amount dev-amount))
+          (let ((grad-amount (/ (* new-ft (var-get burn-rate)) u100)) ;; grad = new * 20%
+                (dev-amount (/ (* grad-amount (var-get dev-premium)) u100)) ;; no need this
+                (burn-amount (- grad-amount dev-amount)) ;; no need this
                 (amm-amount (- new-ft grad-amount))
                 (amm-ustx (- new-stx GRAD-FEE)))
             (try! (as-contract (contract-call? ft transfer burn-amount tx-sender CANT-BE-EVIL none)))
-            (try! (as-contract (contract-call? ft transfer dev-amount tx-sender DEV none)))
+            (try! (as-contract (contract-call? ft transfer dev-amount tx-sender DEV none))) ;; no 
             (try! (as-contract (contract-call? ft transfer amm-amount tx-sender AMM-RECEIVER none)))
             (try! (as-contract (stx-transfer? amm-ustx tx-sender AMM-RECEIVER)))
             (try! (as-contract (stx-transfer? GRAD-FEE tx-sender G-RECEIVER)))

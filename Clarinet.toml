@@ -5,6 +5,16 @@ authors = []
 telemetry = false
 cache_dir = './.cache'
 requirements = []
+[contracts.a1-dex]
+path = 'contracts/a1-dex.clar'
+clarity_version = 2
+epoch = 2.5
+
+[contracts.ai1-token]
+path = 'contracts/ai1-token.clar'
+clarity_version = 2
+epoch = 2.5
+
 [contracts.faktory-dex-trait-v1]
 path = 'contracts/faktory-dex-trait-v1.clar'
 clarity_version = 2
