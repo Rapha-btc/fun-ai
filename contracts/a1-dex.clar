@@ -174,7 +174,7 @@
   ;; boot dex
     (begin
       (var-set fak-ustx FAK_STX)
-      (var-set ft-balance u13_800_000_000_000)
+      (var-set ft-balance u13800000000000)
       (var-set stx-balance u0)
       (var-set open true)
       (try! (stx-transfer? u500000 tx-sender 'SMH8FRN30ERW1SX26NJTJCKTDR3H27NRJ6W75WQE))
