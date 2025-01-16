@@ -15,6 +15,11 @@ path = 'contracts/ai1-token.clar'
 clarity_version = 2
 epoch = 2.5
 
+[contracts.bitflow-pool]
+path = 'contracts/bitflow-pool.clar'
+clarity_version = 2
+epoch = 2.5
+
 [contracts.faktory-dex-trait-v1]
 path = 'contracts/faktory-dex-trait-v1.clar'
 clarity_version = 2
@@ -35,15 +40,6 @@ path = 'contracts/name-faktory-dex.clar'
 clarity_version = 2
 epoch = 2.5
 
-[contracts.stx-ai-dex]
-path = 'contracts/stx-ai-dex.clar'
-clarity_version = 2
-epoch = 2.5
-
-[contracts.stx-ai-token]
-path = 'contracts/stx-ai-token.clar'
-clarity_version = 2
-epoch = 2.5
 [repl.analysis]
 passes = ['check_checker']
 

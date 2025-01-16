@@ -2,9 +2,9 @@
 ;; 99af7ff63e5e4bd7542e55d88bacc25a7a6f79004f9937ea0bab3ca4c2438061
   ;; aibtc.dev DAO faktory.fun DEX @version 1.0
 
-  (impl-trait 'SP29CK9990DQGE9RGTT1VEQTTYH8KY4E3JE5XP4EC.aibtcdev-dao-traits-v1.token-dex)
-  (impl-trait 'SP3XXMS38VTAWTVPE5682XSBFXPTH7XCPEBTX8AN2.faktory-dex-trait-v1.dex-trait)
-  (use-trait faktory-token 'SP3XXMS38VTAWTVPE5682XSBFXPTH7XCPEBTX8AN2.faktory-trait-v1.sip-010-trait) 
+  ;; (impl-trait 'SP29CK9990DQGE9RGTT1VEQTTYH8KY4E3JE5XP4EC.aibtcdev-dao-traits-v1.token-dex)
+  ;; (impl-trait 'SP3XXMS38VTAWTVPE5682XSBFXPTH7XCPEBTX8AN2.faktory-dex-trait-v1.dex-trait)
+  (use-trait faktory-token .faktory-trait-v1.sip-010-trait) ;;SP3XXMS38VTAWTVPE5682XSBFXPTH7XCPEBTX8AN2
   
   (define-constant ERR-MARKET-CLOSED (err u1001))
   (define-constant ERR-STX-NON-POSITIVE (err u1002))
@@ -13,13 +13,13 @@
   (define-constant ERR-TOKEN-NOT-AUTH (err u401))
   (define-constant ERR-UNAUTHORIZED-CALLER (err u402))
   
-  (define-constant FEE-RECEIVER 'SMHAVPYZ8BVD0BHBBQGY5AQVVGNQY4TNHAKGPYP)
-  (define-constant G-RECEIVER 'SM3NY5HXXRNCHS1B65R78CYAC1TQ6DEMN3C0DN74S)
+  (define-constant FEE-RECEIVER 'ST3S2565C4DP2MGR3CMANMGYDCDA314Q25AQGR26R) ;; 'SMHAVPYZ8BVD0BHBBQGY5AQVVGNQY4TNHAKGPYP)
+  (define-constant G-RECEIVER 'ST3CZY55VJE5P5DJAP5E58X123BZKMYDCNEZMRTV2) ;;'SM3NY5HXXRNCHS1B65R78CYAC1TQ6DEMN3C0DN74S)
 
-  (define-constant CANT-BE-EVIL 'SP000000000000000000002Q6VF78)
+  (define-constant CANT-BE-EVIL 'ST3S5KBK62Z4K9XV2HFADJDA5QSRQWGQWTBP0APDY) ;;'SP000000000000000000002Q6VF78)
   (define-constant DEV tx-sender)
-  (define-constant DEX-TOKEN 'SPV9K21TBFAK4KNRJXF5DFP8N7W46G4V9RCJDC22.ai1-faktory)
-  (define-constant AUTHORIZED-CONTRACT 'SPV9K21TBFAK4KNRJXF5DFP8N7W46G4V9RCJDC22.buy-with-velar-faktory)
+  (define-constant DEX-TOKEN .ai1-faktory) ;; SPV9K21TBFAK4KNRJXF5DFP8N7W46G4V9RCJDC22
+  (define-constant AUTHORIZED-CONTRACT .ai1-faktory) ;; 'SPV9K21TBFAK4KNRJXF5DFP8N7W46G4V9RCJDC22.buy-with-velar-faktory)
   
   ;; token constants
   (define-constant TARGET_STX u2000000000)
@@ -68,18 +68,18 @@
                   (xyk-pool-uri (default-to u"https://bitflow.finance" (try! (contract-call? ft get-token-uri))))
                   (xyk-burn-amount (- (sqrti (* amm-ustx amm-amount)) u1)))
               (try! (as-contract (contract-call? ft transfer burn-amount tx-sender CANT-BE-EVIL none)))
-              (try! (as-contract 
-                     (contract-call? 
-                       'SM1793C4R5PZ4NS4VQ4WMP7SKKYVH8JZEWSZ9HCCR.xyk-core-v-1-2 
-                           create-pool 
-                           'SPV9K21TBFAK4KNRJXF5DFP8N7W46G4V9RCJDC22.xyk-pool-stx-ai1-v1-1
-                           'SM1793C4R5PZ4NS4VQ4WMP7SKKYVH8JZEWSZ9HCCR.token-stx-v-1-2 
-                           ft
-                           amm-ustx 
-                           amm-amount 
-                           xyk-burn-amount 
-                           u10 u40 u10 u40 
-                           'SP31C60QVZKZ9CMMZX73TQ3F3ZZNS89YX2DCCFT8P xyk-pool-uri true)))
+            ;;   (try! (as-contract 
+            ;;          (contract-call? 
+            ;;            'SM1793C4R5PZ4NS4VQ4WMP7SKKYVH8JZEWSZ9HCCR.xyk-core-v-1-2 
+            ;;                create-pool 
+            ;;                'SPV9K21TBFAK4KNRJXF5DFP8N7W46G4V9RCJDC22.xyk-pool-stx-ai1-v1-1
+            ;;                'SM1793C4R5PZ4NS4VQ4WMP7SKKYVH8JZEWSZ9HCCR.token-stx-v-1-2 
+            ;;                ft
+            ;;                amm-ustx 
+            ;;                amm-amount 
+            ;;                xyk-burn-amount 
+            ;;                u10 u40 u10 u40 
+            ;;                'SP31C60QVZKZ9CMMZX73TQ3F3ZZNS89YX2DCCFT8P xyk-pool-uri true)))
               (try! (as-contract (stx-transfer? GRAD-FEE tx-sender G-RECEIVER)))
               (var-set open false)
               (var-set stx-balance u0)
@@ -177,11 +177,11 @@
       (var-set ft-balance u13800000000000)
       (var-set stx-balance u0)
       (var-set open true)
-      (try! (stx-transfer? u500000 tx-sender 'SMH8FRN30ERW1SX26NJTJCKTDR3H27NRJ6W75WQE))
+      (try! (stx-transfer? u500000 tx-sender 'ST3S2565C4DP2MGR3CMANMGYDCDA314Q25AQGR26R)) ;;'SMH8FRN30ERW1SX26NJTJCKTDR3H27NRJ6W75WQE))
         (print { 
             type: "faktory-dex-trait-v1", 
             dexContract: (as-contract tx-sender),
-            ammReceiver: 'SM1793C4R5PZ4NS4VQ4WMP7SKKYVH8JZEWSZ9HCCR.xyk-core-v-1-2,
-            poolName: 'SPV9K21TBFAK4KNRJXF5DFP8N7W46G4V9RCJDC22.xyk-pool-stx-ai1-v1-1
+            ;; ammReceiver: 'SM1793C4R5PZ4NS4VQ4WMP7SKKYVH8JZEWSZ9HCCR.xyk-core-v-1-2,
+            ;; poolName: 'SPV9K21TBFAK4KNRJXF5DFP8N7W46G4V9RCJDC22.xyk-pool-stx-ai1-v1-1
        })
       (ok true))

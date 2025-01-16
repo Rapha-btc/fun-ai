@@ -1,8 +1,8 @@
 ;; fak Powered By Faktory.fun
 ;; v1.0 
 
-(impl-trait .faktory-trait-v1.sip-010-trait) ;;'SP3FBR2AGK5H9QBDH3EEN6DF8EK8JY7RX8QJ5SVTE
-(impl-trait 'SP29CK9990DQGE9RGTT1VEQTTYH8KY4E3JE5XP4EC.aibtcdev-dao-traits-v1.token)
+;;  (impl-trait .faktory-trait-v1.sip-010-trait) ;;'SP3FBR2AGK5H9QBDH3EEN6DF8EK8JY7RX8QJ5SVTE
+;; (impl-trait 'SP29CK9990DQGE9RGTT1VEQTTYH8KY4E3JE5XP4EC.aibtcdev-dao-traits-v1.token)
 
 (define-constant ERR-NOT-AUTHORIZED u401)
 (define-constant ERR-NOT-OWNER u402)

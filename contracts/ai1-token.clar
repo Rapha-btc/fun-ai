@@ -2,8 +2,8 @@
 ;; b6e595b71fd86dadf2306f644f852014a4e3cc83606fe4b2a32c9f7a891119a9
 ;; ai1 Powered By Faktory.fun v1.0 
 
-(impl-trait 'SP3XXMS38VTAWTVPE5682XSBFXPTH7XCPEBTX8AN2.faktory-trait-v1.sip-010-trait)
-(impl-trait 'SP29CK9990DQGE9RGTT1VEQTTYH8KY4E3JE5XP4EC.aibtcdev-dao-traits-v1.token)
+;; (impl-trait .faktory-trait-v1.sip-010-trait) ;; 'SP3XXMS38VTAWTVPE5682XSBFXPTH7XCPEBTX8AN2
+;; (impl-trait .aibtcdev-dao-traits-v1.token) ;; 'SP29CK9990DQGE9RGTT1VEQTTYH8KY4E3JE5XP4EC
 
 (define-constant ERR-NOT-AUTHORIZED u401)
 (define-constant ERR-NOT-OWNER u402)
@@ -101,11 +101,11 @@
 
 (begin 
     ;; ft distribution
-    (try! (ft-mint? ai1 (/ (* MAX u80) u100) 'SPV9K21TBFAK4KNRJXF5DFP8N7W46G4V9RCJDC22.ai1-treasury)) ;; 80% treasury
-    (try! (ft-mint? ai1 (/ (* MAX u20) u100) 'SPV9K21TBFAK4KNRJXF5DFP8N7W46G4V9RCJDC22.ai1-faktory-dex)) ;; 20% dex
+    (try! (ft-mint? ai1 (/ (* MAX u80) u100) .ai1-treasury)) ;; 80% treasury SPV9K21TBFAK4KNRJXF5DFP8N7W46G4V9RCJDC22
+    (try! (ft-mint? ai1 (/ (* MAX u20) u100) .ai1-faktory-dex)) ;; 20% dex SPV9K21TBFAK4KNRJXF5DFP8N7W46G4V9RCJDC22
 
     ;; deploy fixed fee
-    (try! (stx-transfer-to 'SMH8FRN30ERW1SX26NJTJCKTDR3H27NRJ6W75WQE u500000)) 
+   ;; (try! (stx-transfer-to 'SMH8FRN30ERW1SX26NJTJCKTDR3H27NRJ6W75WQE u500000)) 
 
     (print { 
         type: "faktory-trait-v1", 
